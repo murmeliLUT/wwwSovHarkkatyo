@@ -1,0 +1,281 @@
+h1 {
+    font-family:georgia, serif;
+    color: green;
+}
+
+h1::first-letter {
+    font-size: 2em;
+    color: red;
+}
+
+body {
+  background: linear-gradient(to right, #80ffaa, #339933, #80ffaa);
+  margin: auto;
+  min-width: 400px;
+}
+
+.inlineElement {
+    display: inline-block;
+    float: left;
+}
+
+/*form.inline input {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+form.inline input[type="submit"] {
+    display: inline-block;
+    font-size: 1em;
+}*/
+
+form.block input {
+    display: block;
+    margin: 10px;
+    font-size: 1.1em;
+    max-width: 90%;
+    width: 310px;
+}
+
+#recaptchaID {
+    margin: 10px;
+}
+
+@media all and (min-width: 801px) {
+    #wholePage {
+        max-width: 1600px;
+        padding: 0px 80px
+    }
+
+    nav {
+        height: 50px;
+        margin: 5px;
+        padding-right: 30px;
+        border: ridge 5px;
+        border-color: #00b300;
+        border-radius: 10px;
+    }
+
+    nav li {
+        float: left;
+        padding-left: 15px;
+        list-style-type: none;
+    }
+
+    li.loginLinks {
+        float: right;
+        padding-right: 15px;
+        list-style-type: none;
+    }
+
+    .item {
+        min-width: 50%;
+        max-width: 80%;
+        font-size: 2em;
+    }
+
+    .infoText {
+        display: inline-block;
+        color: #008000;
+        font-weight: bolder;
+        font-size: 1.2em;
+        border: inset 8px #00ff00;
+        border-radius: 20%;
+    }
+
+    form.block {
+        display: inline-block;
+        float: left;
+    }
+
+    #canvasAd {
+        background-image: url('http://www2.it.lut.fi/project/STX/lutlogo.jpg');
+        background-repeat: no-repeat;
+        max-width: 100%;
+    }
+    #canvasAdvertisement {
+        margin: auto;
+        align-content: center;
+        width: 630px;
+        max-width: 100%;
+    }
+
+}
+
+@media all and (max-width: 800px) {
+    #wholePage {
+        max-width: 95%;
+        padding: 0px 25px
+    }
+
+    nav {
+        margin: 5px;
+    }
+
+    nav li {
+        list-style-type: none;
+    }
+
+    .item {
+        min-width: 70%;
+        max-width: 400px;
+        font-size: 1em;
+    }
+
+    .infoText {
+        display: block;
+        color: #000000;
+        border: solid 4px #008000;
+        border-radius: 5px;
+    }
+    #canvasAd {
+        display: none;
+    }
+    #canvasAdvertisement {
+        display: none;
+    }
+}
+
+#wholePage {
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+nav {
+    background-color: #ccffcc;
+}
+
+li#hello {
+    font-size: 1em;
+    font-weight: bold;
+    color: blue;
+}
+
+p {
+    text-align: justify;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
+a:active, a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: red;
+}
+
+.infoText {
+    font-family:georgia, serif;
+    background-color: #99ff99;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    max-width: 270px;
+    min-width: 200px;
+}
+
+footer {
+    clear: both;
+    background-color: #99ff99;
+    border: double 4px #008000;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.list {
+	font-family:garamond;
+	color:#cc0000;
+}
+
+.item {
+    /*height: 50px;*/
+    font-family: georgia;
+    color: black; /*Text color*/
+    background-color: lightblue;
+    border-radius: 10px;
+    border: 2px;
+    border-style: solid;
+    margin: 5px 5px;
+    text-transform: capitalize;
+    padding-left: 5px;
+}
+
+div.item p {
+    font-size: 0.5em;
+}
+
+.hover {
+    background-color: green;
+}
+
+.infop {
+    font-size: 2em;
+    font-family: Verdana;
+}
+
+.regLog {
+    display: block;
+    margin: 5px;
+}
+
+#headerDiv {
+    max-width: 1500px;
+    border: ridge #00b300;
+    border-width: 5px 10px 2.5px 10px;
+    border-radius: 20px;
+    background-color: #ccffcc;
+    margin: 0px 10px;
+}
+
+#siteHeader {
+    text-align: center;
+    text-shadow: 5px 5px 10px #999999; /* syntax left-right up-down shadow_radius color */
+    border-bottom: 5px  ridge #00b300;
+}
+
+#border {
+    max-width: 1460px;
+    min-width: 190px;
+    border-width: 2.5px 5px 5px 5px;
+    border-style: ridge;
+    border-color: #00b300;
+    margin: 0px 30px;
+    padding: 5px;
+    background-color: #ccffcc;
+}
+
+.form {
+    display: inline-block;
+    margin: 0 10px;
+    max-width: 75%;
+    min-width: 190px;
+}
+
+
+#button {
+    width: 80px;
+	height: 80px;
+	background-color: #00b300;
+	border-radius: 100%;
+    border-style: solid;
+    border-color: #009933;
+	text-align: center;
+	line-height:80px;
+    display: inline-block;
+	font-family: impact;
+	font-size: 1em;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 5px 0px 0px 10px;
+}
+
+#inputField {
+    font-size: 2em;
+    height:40px;
+    max-width: 100%;
+    display: inline-block;
+}
