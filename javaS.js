@@ -13,16 +13,23 @@ function createNewTopic() {
     });
 }
 
-function getTopics() {
+
+function createNewPost() {
+    content = $("#postArea").val();
+    $("#postArea").val("");
     $.ajax({
         url: "DHandler.php",
-        type: "GET",
-        data: {"getTopics": "getTopics"},
-        dataType: "html"
+        type: "POST",
+        data: {"postContent": content},
+        dataType: "html",
+        success: function(data) {
+            getPosts();
+        }
     });
 }
 
-function sendPost() {
+
+function sendPost(uname, tname) {
     var content = document.getElementById("postArea").value;
 
     $.ajax({
@@ -30,8 +37,8 @@ function sendPost() {
         type: "POST",
         data: {
             "content": content,
-            "poster": "<?php print $_SESSION['username'] ?>",
-            "topic": "<?php print $_SESSION['topic'] ?>"
+            "posterName": uname,
+            "topicName": tname
         },
         dataType: "html",
         success: function(data) {
@@ -40,19 +47,26 @@ function sendPost() {
     });
 }
 
-function getPosts(){
+function getTopics() {
+    $.ajax({
+        url: "DHandler.php",
+        type: "GET",
+        data: {"getTopics": "getTopics"},
+        dataType: "html",
+        success: function(data){
+            $("#topicList").html(data);
+        }
+    });
+}
 
+function getPosts(){
 	$.ajax({
-			url: "datahandler.php",
+			url: "DHandler.php",
 			type: "GET",
-			data:{
-				"thrd": "<?php echo $_SESSION['thread'];?>",
-				"posts": 'getPosts'
-			},
+			data:{"postName": "<?php echo $_SESSION['topicName'];?>"},
 			dataType: "html",
 			success: function(data){
-				$("#posts").html(data);
-
+				$("#postList").html(data);
 			}
 	});
 }

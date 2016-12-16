@@ -15,7 +15,6 @@ function HTMLheader() {
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
             <link type="text/css" rel="stylesheet" href="forum.css" />
             <script src="javaS.js"> </script>
-            <!--script src="ToDo.js"></script-->
         </head>
       <body>
           <div id="wholePage">
@@ -75,12 +74,24 @@ function HTMLfooter() {
 }
 
 function printTopics($topics) {
-    /*Topic rows are: "tID", "tName", "tDT", "users.uName" */
-    print "<h3>Select post to read</h3>";
-    print "<ol>";
+    /*Topic rows are: "tID", "tName", "tDT", "uName" */
+    print "<h3>Select topic to read</h3>";
+    print "<ol id='topicList'>";
     foreach ($topics as $value) {
-        print "<li class='topicName'><a href='index.php?p=readTopic>" .
+        print "<li class='topicName'><a href='index.php?topic=" . $value["tName"] . "'>" .
         $value['tName'] . " created by: " . $value["uName"] . " " . $value["tDT"] . "</a></li>";
+    }
+
+    print "</ol>";
+}
+
+function printPosts($posts) {
+    /*Post infos are: "pID", "postContent", "pDT", "uName" */
+    print "<h3>". $_SESSION["topicName"] ."</h3>";
+    print "<ol id='postList'>";
+    foreach ($posts as $value) {
+        print "<li class='postArea'><div><p>" . $value["pDT"] . " " . $value["uName"] . "</p><br /><p>" .
+        $value["postContent"] . " </p></div></li>";
     }
 
     print "</ol>";
@@ -88,18 +99,17 @@ function printTopics($topics) {
 
 function topicFieldPrint() {
 print <<<TOPIC
-    <h3>Or create new a post</h3>
-    <input id="topicField" type="text" name="topicName" placeholder="Topic" </input>
+    <h3>Or create a new topic</h3>
+    <input id="topicField" type="text" name="topicName" placeholder="Topic"> </input>
     <textarea id="postArea" rows="10" cols="100"> </textarea>
-    <input id="addTopicB" type="button" value="Create topic" onclick="createNewTopic();" </input>
+    <input id="addTopicB" type="button" value="Create topic" onclick="createNewTopic();"> </input>
 TOPIC;
 }
 
 function postFieldPrint() {
-print <<<POSTING
-    <textarea id="postArea" rows="10" cols="100"> </textarea>
-    <input id="addPostB" type="button" value="Send post" onclick="createNewPost();" </input>
-POSTING;
+echo "<textarea id='postArea' rows='10' cols='100'> </textarea>" .
+    "<input id='addPostB' type='button' value='Send post' " .
+    "onclick='createNewPost( '{$_SESSION["username"]}' , '{$_SESSION["topicName"]}' );'> </input>";
 }
 
 function loginForm() {

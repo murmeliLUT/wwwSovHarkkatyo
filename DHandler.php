@@ -35,9 +35,20 @@ function loadTopics() {
     printTopics($topics);
 }
 
-if (isset($_GET["getTopics"]) && !empty($_GET["getTopics"])) {
+function loadPosts($table) {
+    $dbh = DBHandlerClass::getInstance();
+    $colums = array("pID", "postContent", "pDT", "users.uName");
+    $additionalTerm = "INNER JOIN users on $table.uID = users.uID";
+
+    $posts = $dbh->readFromDB("topic_".$table, $colums, $additionalTerm, NULL);
+
+    printPosts($posts);
+}
+
+if (isset($_GET["getTopics"]) && (!empty($_GET["getTopics"]))) {
     loadTopics();
 }
+
 
 if (isset($_POST["topic"]) && !empty($_POST["topic"])) {
     $table = $_POST["topic"];
@@ -56,6 +67,24 @@ if (isset($_POST["topic"]) && !empty($_POST["topic"])) {
         $colums = array("uID", "tName");
         $values = array($_SESSION["userID"], "topic_".$table);
         $dbh->writeToDB("topics", $colums, $values);
-        loadTopics();
+//        loadTopics();
     }
+}
+
+if (isset($_GET["postName"]) && (!empty($_GET["postName"]))) {
+    loadPosts($_SESSION["topicName"]);
+}
+
+
+if (isset($_POST["topicName"]) && !empty($_POST["topicName"]) &&
+    isset($_POST["posterName"]) && !empty($_POST["posterName"]) &&
+    isset($_POST["content"]) && !empty($_POST["content"])) {
+    $table = $_POST["topicName"];
+    $dbh = DBHandlerClass::getInstance();
+
+    $colums = array("postContent", "uID");
+    $values = array($_POST["content"], $_SESSION["userID"]);
+    $dbh->writeToDB($table, $colums, $values);
+//    loadPosts();
+
 }

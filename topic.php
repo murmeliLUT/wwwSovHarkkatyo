@@ -1,5 +1,5 @@
 <?php
 require_once("DHandler.php");
 
-loadPosts();
+loadPosts($_SESSION["topicName"]);
 postFieldPrint();

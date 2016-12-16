@@ -35,7 +35,7 @@ class DBHandlerClass {
             }
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt->debugDumpParams();
+//$stmt->debugDumpParams();
             $db = null;
             return $rows;
 
@@ -76,7 +76,7 @@ $stmt->debugDumpParams();
     function createNewTable($table) {
         $db = new PDO(DBHandlerClass::$DNS, DBHandlerClass::$USER, DBHandlerClass::$PASS);
         $queryS = "CREATE TABLE topic_" . $table . " (pID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY," .
-        " postContent LONGBLOB, uID INT(6), tDT TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+        " postContent LONGBLOB, uID INT(6), pDT TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 
         $stmt = $db->prepare($queryS);
         $stmt->execute();

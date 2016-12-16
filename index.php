@@ -18,7 +18,8 @@ if (isset($_SESSION['username']) || (isset($_GET["p"]) && $_GET["p"] === "regist
     } else if (isset($_GET["p"]) && $_GET["p"] === "forums") {
         require("forums.php");
 
-    } else if (isset($_GET["p"]) && $_GET["p"] === "readTopic") {
+    } else if (isset($_GET["topic"])) {
+        $_SESSION['topicName'] = $_GET["topic"];
         require("topic.php");
     }
 
