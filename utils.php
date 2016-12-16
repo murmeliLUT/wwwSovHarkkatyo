@@ -31,9 +31,8 @@ function HTMLnavigation() {
                     <ul>
                         <li><a href="index.php">FRONT PAGE</a></li>
                         <li><a href="index.php?p=forums">FORUM TOPICS</a></li>
-                        <li><a href="index.php?p=ajax">STATISTCS</a></li>
                         <?php
-                        if(isset($_SESSION["username"])) {
+                        if(isset($_SESSION["username"]) && isset($_SESSION["userID"])) {
                             print "<li class='loginLinks'><a href='index.php?p=logout'>LOGOUT</a></li>
                             <li id='hello' class='loginLinks'>HELLO {$_SESSION['username']}!</li>";
 
@@ -107,9 +106,11 @@ TOPIC;
 }
 
 function postFieldPrint() {
+    $uName = $_SESSION["username"];
+    $tName = $_SESSION["topicName"];
 echo "<textarea id='postArea' rows='10' cols='100'> </textarea>" .
     "<input id='addPostB' type='button' value='Send post' " .
-    "onclick='createNewPost( '{$_SESSION["username"]}' , '{$_SESSION["topicName"]}' );'> </input>";
+    "onclick='createNewPost();'> </input>";
 }
 
 function loginForm() {

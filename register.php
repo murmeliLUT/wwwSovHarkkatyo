@@ -3,12 +3,10 @@ require_once("utils.php");
 require_once("checker.php");
 require_once("DBHandler.php");
 require_once("DHandler.php");
-/*phpinfo();*/
 
 if (regCheck($_POST)) {
     validationForm();
-     /* TÄSTÄ LÄHETETÄÄN CODE EMAIL VALIDATIONIIN JA USERNAME*/
-     if (isset($_POST["username"])) {
+     if (isset($_POST["username"]) && !empty($_POST["username"])) {
          $_SESSION["username"] = $_POST["username"];
      }
  } else {
@@ -42,8 +40,9 @@ if (isset($_POST["code"]) && isset($_SESSION["username"]) &&
     unset($_POST["realname"]);
 
     infoText("Account created.");
-    sleep(5);
+    sleep(15);
     header("Location: http://www.ht.dev/index.php?p=login");
+
 }
 
 ?>

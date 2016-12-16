@@ -113,8 +113,6 @@ function pwVerify($pw, $hash) {
 }
 
 function emailValidation($key, $uname) {
-    print $key;
-    print $uname;
     $dbh = DBHandlerClass::getInstance();
     $memcache = $dbh->connectMemcache();
     if($dbh->getMemcacheValue($uname."_code", $memcache) == $key) {

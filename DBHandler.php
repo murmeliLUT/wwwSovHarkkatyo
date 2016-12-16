@@ -84,24 +84,20 @@ class DBHandlerClass {
     }
 
     function connectMemcache() {
-        print "conMem<br />";
         $memcache = new Memcache();
         $memcache->addServer('127.0.0.1', 11211) or die ("Could not connect.");
         return $memcache;
     }
 
     function setMemcacheValue($key, $memcache, $value) {
-        print "setMem<br />";
         if (isset($memcache)) {
             $memcache->set($key, $value, false, 300) or die ("Failed to save data at the server.");
         }
     }
 
     function getMemcacheValue($key, $memcache) {
-        print "getMem<br />";
         if (isset($memcache)) {
-            $temp = $memcache->get($key);
-            print "temp: ".$temp. "<br />";
+            $temp = $memcache->get($key);;
             if($temp) {
                 return $temp;
             }

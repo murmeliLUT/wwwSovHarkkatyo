@@ -15,7 +15,7 @@ function recaptchaCheck() {
     /*    $_POST["recaptcha_challenge_field"],
         $_POST["recaptcha_response_field"]);*/
 
-    if(!$results["success"] == 1) {
+    if($results["success"] == 1) {
         return 1;
 
     } else {
@@ -57,7 +57,7 @@ if (isset($_POST["topic"]) && !empty($_POST["topic"])) {
     $columsRead = array("tName");
     $addTerm = "WHERE tName = ?";
     $rows = $dbh->readFromDB("topics", $columsRead, $addTerm, "topic_".$table);
-    print_r($rows);
+
     if (sizeof($rows) > 0) {
         infoText("Topic with same name already exist.");
 
