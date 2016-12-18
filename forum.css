@@ -1,9 +1,9 @@
-h1 {
+h1 { /* Main header */
     font-family:georgia, serif;
     color: green;
 }
 
-h1::first-letter {
+h1::first-letter { /* Main header first letter */
     font-size: 2em;
     color: red;
 }
@@ -14,23 +14,7 @@ body {
   min-width: 400px;
 }
 
-.inlineElement {
-    display: inline-block;
-    float: left;
-}
-
-/*form.inline input {
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-left: 5px;
-}
-
-form.inline input[type="submit"] {
-    display: inline-block;
-    font-size: 1em;
-}*/
-
-form.block input {
+form.block input {  /* Register and login input fields. */
     display: block;
     margin: 10px;
     font-size: 1.1em;
@@ -38,17 +22,18 @@ form.block input {
     width: 310px;
 }
 
-#recaptchaID {
+#recaptchaID {  /* recaptcha box */
     margin: 10px;
 }
 
-@media all and (min-width: 801px) {
-    #wholePage {
+@media all and (min-width: 801px) {  /* Settings for big screens. */
+
+    #wholePage { /* Almost whole page is in this div */
         max-width: 1600px;
         padding: 0px 80px
     }
 
-    nav {
+    nav {  /* Navigation panel */
         height: 50px;
         margin: 5px;
         padding-right: 30px;
@@ -57,85 +42,56 @@ form.block input {
         border-radius: 10px;
     }
 
-    nav li {
+    nav li { /* Makes navigation links list horizontal. */
         float: left;
         padding-left: 15px;
         list-style-type: none;
     }
 
-    li.loginLinks {
+    li.loginLinks {  /* Set login links to right side of panel. */
         float: right;
         padding-right: 15px;
         list-style-type: none;
     }
 
-    .item {
-        min-width: 50%;
-        max-width: 80%;
-        font-size: 2em;
-    }
-
-    .infoText {
+    .infoText { /* Info boxes are larger with bigger screen. */
         display: inline-block;
         color: #008000;
         font-weight: bolder;
         font-size: 1.2em;
         border: inset 8px #00ff00;
-        border-radius: 20%;
+        border-radius: 20%; /* Round corners */
     }
 
     form.block {
         display: inline-block;
         float: left;
     }
-
-    #canvasAd {
-        background-image: url('http://www2.it.lut.fi/project/STX/lutlogo.jpg');
-        background-repeat: no-repeat;
-        max-width: 100%;
-    }
-    #canvasAdvertisement {
-        margin: auto;
-        align-content: center;
-        width: 630px;
-        max-width: 100%;
-    }
-
 }
 
-@media all and (max-width: 800px) {
-    #wholePage {
+@media all and (max-width: 800px) {  /* Settings for smaller screens. */
+
+    #wholePage { /* Scaling mbigger compared to screen size. */
         max-width: 95%;
         padding: 0px 25px
     }
 
-    nav {
+    nav { /* Navigation panel, reduces size. */
         margin: 5px;
     }
 
-    nav li {
+    nav li { /* Makes list to be vertical list again. */
         list-style-type: none;
     }
 
-    .item {
-        min-width: 70%;
-        max-width: 400px;
-        font-size: 1em;
-    }
-
-    .infoText {
+    .infoText { /* Info boxes are more compact in small screen. */
         display: block;
         color: #000000;
         border: solid 4px #008000;
         border-radius: 5px;
     }
-    #canvasAd {
-        display: none;
-    }
-    #canvasAdvertisement {
-        display: none;
-    }
 }
+
 
 #wholePage {
     min-width: 400px;
@@ -146,28 +102,75 @@ nav {
     background-color: #ccffcc;
 }
 
-li#hello {
+li#hello { /* User's hello message decoration  */
     font-size: 1em;
     font-weight: bold;
     color: blue;
 }
 
-p {
+p { /* All paragraphs are justified to make them look prettier. */
     text-align: justify;
 }
 
-a:link, a:visited {
+.topicName { /* Name of topic on topic page */
+    font-family: Verdana,sans-serif;
+    text-transform: uppercase;
+}
+
+
+.postListElement { /* Elements in post list. All post elements have this class. */
+    list-style: none;
+    padding: 0px 10px;
+    border: 4px ridge #00b300;
+    margin: 1px 60px 1px 0px;
+}
+
+ul#postList li:first-of-type { /* Makes Original Post little more fancy looking. */
+    border: 10px groove #00e6ac;
+}
+
+.topicHeader, .infoHeader { /* H3 header decorations. */
+    margin: 1px 30px 1px 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;;
+}
+
+.postDiv { /* Div for adding new posts. */
+    display: block;
+    margin: 0px auto 0px 40px;
+    width: 1300px;
+    max-width: 80%;
+}
+
+#postArea { /* Text are for post content. */
+    max-width: 100%;
+    resize:none;
+    resize:vertical;
+}
+
+#addPostB, #addTopicB, #topicField { /* Marings for adder buttons and topic's name field */
+    display: block;
+    margin: 1px 30px 1px 40px;
+}
+
+#PDFlink { /* Link for to generate post to PDF. */
+    float: right;
+    margin: 1px 30px 1px 40px;
+}
+
+a:link, a:visited { /* Used and unused links are indetical looking. */
     text-decoration: none;
     color: blue;
 }
 
-a:active, a:hover {
+a:active, a:hover { /* When mouse is over link or link is clicked but not released. */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: bold; /* Weight and color to make link more ostentatious */
     color: red;
 }
 
-.infoText {
+.infoText { /* Info boxes. Fancy borders to make then ostentatious. */
     font-family:georgia, serif;
     background-color: #99ff99;
     text-align: center;
@@ -177,7 +180,7 @@ a:active, a:hover {
     min-width: 200px;
 }
 
-footer {
+footer { /* Footer of page. */
     clear: both;
     background-color: #99ff99;
     border: double 4px #008000;
@@ -191,38 +194,7 @@ footer {
 	color:#cc0000;
 }
 
-.item {
-    /*height: 50px;*/
-    font-family: georgia;
-    color: black; /*Text color*/
-    background-color: lightblue;
-    border-radius: 10px;
-    border: 2px;
-    border-style: solid;
-    margin: 5px 5px;
-    text-transform: capitalize;
-    padding-left: 5px;
-}
-
-div.item p {
-    font-size: 0.5em;
-}
-
-.hover {
-    background-color: green;
-}
-
-.infop {
-    font-size: 2em;
-    font-family: Verdana;
-}
-
-.regLog {
-    display: block;
-    margin: 5px;
-}
-
-#headerDiv {
+#headerDiv { /* Div where site header is. */
     max-width: 1500px;
     border: ridge #00b300;
     border-width: 5px 10px 2.5px 10px;
@@ -231,13 +203,13 @@ div.item p {
     margin: 0px 10px;
 }
 
-#siteHeader {
+#siteHeader { /* Decorations for site header. */
     text-align: center;
     text-shadow: 5px 5px 10px #999999; /* syntax left-right up-down shadow_radius color */
     border-bottom: 5px  ridge #00b300;
 }
 
-#border {
+#border { /* Borders of page */
     max-width: 1460px;
     min-width: 190px;
     border-width: 2.5px 5px 5px 5px;
@@ -248,34 +220,56 @@ div.item p {
     background-color: #ccffcc;
 }
 
-.form {
-    display: inline-block;
-    margin: 0 10px;
-    max-width: 75%;
-    min-width: 190px;
-}
-
-
-#button {
-    width: 80px;
-	height: 80px;
-	background-color: #00b300;
-	border-radius: 100%;
-    border-style: solid;
-    border-color: #009933;
-	text-align: center;
-	line-height:80px;
-    display: inline-block;
-	font-family: impact;
-	font-size: 1em;
-    color: #ffffff;
-    vertical-align: middle;
-    margin: 5px 0px 0px 10px;
-}
-
-#inputField {
-    font-size: 2em;
-    height:40px;
+#canvasAd { /* Actual canvas element */
     max-width: 100%;
-    display: inline-block;
+}
+
+#canvasAdvertisement { /* Div for canvas element */
+    margin: auto;
+    align-content: center;
+    width: 630px;
+    max-width: 100%;
+}
+
+@media print{ /* Printing settings. All black and white and only texts are visible. */
+    nav, form, canvas, textarea, div.postDiv, div.postArea, .infoText, #PDFlink {
+        display: none;
+        visibility: hidden;
+    }
+
+    input { /* Makes input field invivible to printing. */
+        position: absolute;
+        visibility: hidden;
+    }
+
+    h1::first-letter {
+        color: black;
+    }
+
+    li.topicName a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #siteHeader {
+        border-color: black;
+    }
+    ul#postList li:first-of-type {
+        border-color: black;
+        border-width: 4px;
+        border-style: solid;
+        color: black;
+    }
+
+    html, body, footer, p, div, ul, h1, h3, a { /* Text decoration to black */
+        background-color: white;
+        color: black;
+    }
+
+    footer, div#headerDiv, .postListElement { /* Black borders. */
+        border-color: black;
+        border-width: 3px;
+        border-style: solid;
+        color: black;
+    }
 }

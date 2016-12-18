@@ -1,6 +1,6 @@
 <?php
-define("EMAIL", EMAIL YOU WANT TO USE TO SEND VALIDATIONS);
-define("PASS", PASSWORD TO THAT EMAIL);
+define("EMAIL", "example@gmail.com");
+define("PASS", "password");
 function send_e_Mail($email,$detail){
 
     require 'class.phpmailer.php';
@@ -19,7 +19,7 @@ function send_e_Mail($email,$detail){
     $mail->SMTPAuth = true;
 
     //change these to your mail service's username and password
-    $mail->Username = EMAIL; 
+    $mail->Username = EMAIL;
     $mail->Password = PASS;
     $mail->SMTPSecure = "tls";
     $mail->Port = 587;

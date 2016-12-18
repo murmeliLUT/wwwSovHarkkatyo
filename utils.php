@@ -1,7 +1,10 @@
 <?php
 require_once("DHandler.php");
 session_start();
+/* File to handle all normal printing to views. MVC view contoller/generator.
+which is handled by Contorller (DHandler). */
 function HTMLheader() {
+/* Function to print page Header. */
  ?>
     <!DOCTYPE html>
     <html>
@@ -26,6 +29,7 @@ function HTMLheader() {
 <?php
 }
 function HTMLnavigation() {
+    /* Function to print navigaion panel. */
 ?>
                 <nav>
                     <ul>
@@ -46,20 +50,9 @@ function HTMLnavigation() {
 
 <?php
 }
-function HTMLlist() {
-?>
-            </div>
-                <div id="border">
 
-                    <form action="index.php?p=adder" method="post" class="form">
-                        <input id="inputField" type="text" name="textInput" placeholder="Write note" />
-                        <input id="button" type="submit" value="Add">
-                    </form>
-
-                    <br/><br/><div class="list"></div>
-<?php
-}
 function HTMLfooter() {
+    /* Function to print page footer. */
 ?>
                     <footer>
                         <p><strong>WWW-sovellukset kurssin harjoitustyö, Roope Luukkainen, 2016 </strong></p>
@@ -72,47 +65,58 @@ function HTMLfooter() {
 <?php
 }
 
-function printTopics($topics) {
-    /*Topic rows are: "tID", "tName", "tDT", "uName" */
-    print "<h3>Select topic to read</h3>";
+function printTopics($topics) { /* Function to print topics. */
+    /*Topic colums are: "tID", "tName", "tDT", "uName" */
     print "<ol id='topicList'>";
     foreach ($topics as $value) {
-        print "<li class='topicName'><a href='index.php?topic=" . $value["tName"] . "'>" .
-        $value['tName'] . " created by: " . $value["uName"] . " " . $value["tDT"] . "</a></li>";
+        print "<li class='topicName'><a href='index.php?topic=" . $value["tName"] .
+         "'><strong>" . $value['tName'] . "</strong> created by: <strong>" .
+         $value["uName"] . "</strong> " . $value["tDT"] . "</a></li>";
     }
 
-    print "</ol>";
+    print "</ol>";  /* Topics are listed in ordered list. */
 }
 
-function printPosts($posts) {
+function printHeader($header) {  /* Function to print any h3 header. */
+    $header = preg_replace('/_/', ' ', $header);
+    print "<h3 class='infoHeader'>". $header ."</h3>";
+}
+
+function printPosts($posts) { /* Function to print posts. */
     /*Post infos are: "pID", "postContent", "pDT", "uName" */
-    print "<h3>". $_SESSION["topicName"] ."</h3>";
-    print "<ol id='postList'>";
-    foreach ($posts as $value) {
-        print "<li class='postArea'><div><p>" . $value["pDT"] . " " . $value["uName"] . "</p><br /><p>" .
-        $value["postContent"] . " </p></div></li>";
+    print "<ul id='postList'>";
+    foreach ($posts as $post) {
+        print "<li class='postListElement'><p><u>" . $post["pDT"] . " <strong>" .
+        $post["uName"] . "</strong></u></p><p>" . $post["postContent"] . " </p></li>";
     }
 
-    print "</ol>";
+    print "</ul>"; /* Posts are in unordered list. */
 }
 
+function PDFbutton() { /* Function to create PDF download button. Used in topic pages. */
+?>
+    <a id="PDFlink" href="javascript:downloadPdf()">SAVE TOPIC AS PDF</a>
+<?php
+}
+
+/* Function to print topic creation form. */
 function topicFieldPrint() {
 print <<<TOPIC
-    <h3>Or create a new topic</h3>
+    <h3 class="infoHeader">Or create a new topic</h3>
     <input id="topicField" type="text" name="topicName" placeholder="Topic"> </input>
-    <textarea id="postArea" rows="10" cols="100"> </textarea>
+    <div class="postDiv"><textarea id="postArea" rows="10" cols="150" > </textarea></div>
     <input id="addTopicB" type="button" value="Create topic" onclick="createNewTopic();"> </input>
 TOPIC;
 }
 
+/* Function to print post creation form. */
 function postFieldPrint() {
-    $uName = $_SESSION["username"];
-    $tName = $_SESSION["topicName"];
-echo "<textarea id='postArea' rows='10' cols='100'> </textarea>" .
-    "<input id='addPostB' type='button' value='Send post' " .
-    "onclick='createNewPost();'> </input>";
+print "<div class='postDiv'><textarea id='postArea' rows='10' cols='150' > </textarea></div>
+    <input id='addPostB' type='button' value='Send post'></input>";
+
 }
 
+/* Function to print login form. */
 function loginForm() {
 print <<<LOGIN
 <form class="block" action="index.php?p=login" method="post">
@@ -124,6 +128,7 @@ print <<<LOGIN
 LOGIN;
 }
 
+/* Function to print email validation form. */
 function validationForm() {
 print <<<VALIDATE
     <form class="block" action="index.php?p=register" method="post">
@@ -133,6 +138,7 @@ print <<<VALIDATE
 VALIDATE;
 }
 
+/* Function to print registeration form. */
 function regForm() {
 print <<<REGISTRATION
     <form class="block" action="index.php?p=register" method="post">
@@ -147,15 +153,11 @@ print <<<REGISTRATION
 REGISTRATION;
 }
 
-function infoText($content) {
+function infoText($content) { /* Function to print any info content. */
     print "<div class='infoText'>" . $content . "</div>";
 }
 
-function generateValue($lenght) {
-    return bin2hex(openssl_random_pseudo_bytes($lenght));
-}
-
-function advertisement() {
+function advertisement() { /* Function to create canvas element which will be fill by image. */
 ?>
 <div id="canvasAdvertisement">
     <a href="http://www.lut.fi/"><canvas id="canvasAd" width="630" height="193"></canvas></a>
